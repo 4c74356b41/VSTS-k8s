@@ -1,0 +1,654 @@
+{
+    "source": 2,
+    "id": 3,
+    "revision": 13,
+    "name": "k8s-tiered",
+    "description": null,
+    "createdBy": {
+        "id": "d3ffbecd-6b86-48c4-9091-a3263c5f9be3",
+        "displayName": "Глеб Боушев",
+        "uniqueName": "core@4c74356b41.com",
+        "url": "https://app.vssps.visualstudio.com/A4d91f5a3-a9c6-4445-8933-77d12eeda747/_apis/Identities/d3ffbecd-6b86-48c4-9091-a3263c5f9be3",
+        "imageUrl": "https://4c74356b41.visualstudio.com/_api/_common/identityImage?id=d3ffbecd-6b86-48c4-9091-a3263c5f9be3&t=00000000-0000-0000-d05f-a1750931d508"
+    },
+    "createdOn": "2018-01-23T15:01:26.917Z",
+    "modifiedBy": {
+        "id": "d3ffbecd-6b86-48c4-9091-a3263c5f9be3",
+        "displayName": "Глеб Боушев",
+        "uniqueName": "core@4c74356b41.com",
+        "url": "https://app.vssps.visualstudio.com/A4d91f5a3-a9c6-4445-8933-77d12eeda747/_apis/Identities/d3ffbecd-6b86-48c4-9091-a3263c5f9be3",
+        "imageUrl": "https://4c74356b41.visualstudio.com/_api/_common/identityImage?id=d3ffbecd-6b86-48c4-9091-a3263c5f9be3&t=00000000-0000-0000-d05f-a1750931d508"
+    },
+    "modifiedOn": "2018-01-23T17:00:15.073Z",
+    "isDeleted": false,
+    "path": "\\",
+    "variables": {},
+    "variableGroups": [],
+    "environments": [
+        {
+            "id": 4,
+            "name": "dev",
+            "rank": 1,
+            "owner": {
+                "id": "d3ffbecd-6b86-48c4-9091-a3263c5f9be3",
+                "displayName": "Глеб Боушев",
+                "uniqueName": "core@4c74356b41.com",
+                "url": "https://app.vssps.visualstudio.com/A4d91f5a3-a9c6-4445-8933-77d12eeda747/_apis/Identities/d3ffbecd-6b86-48c4-9091-a3263c5f9be3",
+                "imageUrl": "https://4c74356b41.visualstudio.com/_api/_common/identityImage?id=d3ffbecd-6b86-48c4-9091-a3263c5f9be3&t=00000000-0000-0000-d05f-a1750931d508"
+            },
+            "variables": {
+                "env": {
+                    "value": "dev"
+                }
+            },
+            "variableGroups": [],
+            "preDeployApprovals": {
+                "approvals": [
+                    {
+                        "rank": 1,
+                        "isAutomated": true,
+                        "isNotificationOn": false,
+                        "id": 11
+                    }
+                ]
+            },
+            "deployStep": {
+                "id": 14
+            },
+            "postDeployApprovals": {
+                "approvals": [
+                    {
+                        "rank": 1,
+                        "isAutomated": true,
+                        "isNotificationOn": false,
+                        "id": 17
+                    }
+                ]
+            },
+            "deployPhases": [
+                {
+                    "deploymentInput": {
+                        "parallelExecution": {
+                            "parallelExecutionType": "none"
+                        },
+                        "skipArtifactsDownload": false,
+                        "artifactsDownloadInput": {
+                            "downloadInputs": []
+                        },
+                        "queueId": 16,
+                        "demands": [],
+                        "enableAccessToken": false,
+                        "timeoutInMinutes": 0,
+                        "jobCancelTimeoutInMinutes": 1,
+                        "condition": "succeeded()",
+                        "overrideInputs": {}
+                    },
+                    "rank": 1,
+                    "phaseType": 1,
+                    "name": "Agent phase",
+                    "workflowTasks": [
+                        {
+                            "taskId": "cbc316a2-586f-4def-be79-488a1f503564",
+                            "version": "0.*",
+                            "name": "create k8s namespaces",
+                            "refName": "ClonedClonedKubernetes111",
+                            "enabled": true,
+                            "alwaysRun": false,
+                            "continueOnError": false,
+                            "timeoutInMinutes": 0,
+                            "definitionType": null,
+                            "overrideInputs": {},
+                            "condition": "succeeded()",
+                            "inputs": {
+                                "kubernetesServiceEndpoint": "8bd4ee98-7067-4ea0-bfce-233c35900c28",
+                                "command": "apply",
+                                "useConfigurationFile": "false",
+                                "configuration": "",
+                                "arguments": "-f namespaces.yaml --namespace=$(env)",
+                                "containerRegistryType": "Azure Container Registry",
+                                "dockerRegistryEndpoint": "",
+                                "azureSubscriptionEndpoint": "",
+                                "azureContainerRegistry": "",
+                                "secretName": "",
+                                "forceUpdate": "true",
+                                "versionOrLocation": "version",
+                                "versionSpec": "1.7.0",
+                                "checkLatest": "true",
+                                "specifyLocation": "",
+                                "cwd": "$(System.DefaultWorkingDirectory)/dev/drop",
+                                "outputFormat": "json",
+                                "kubectlOutput": ""
+                            }
+                        },
+                        {
+                            "taskId": "cbc316a2-586f-4def-be79-488a1f503564",
+                            "version": "0.*",
+                            "name": "create k8s deployment",
+                            "refName": "ClonedKubernetes11",
+                            "enabled": true,
+                            "alwaysRun": false,
+                            "continueOnError": false,
+                            "timeoutInMinutes": 0,
+                            "definitionType": null,
+                            "overrideInputs": {},
+                            "condition": "succeeded()",
+                            "inputs": {
+                                "kubernetesServiceEndpoint": "8bd4ee98-7067-4ea0-bfce-233c35900c28",
+                                "command": "apply",
+                                "useConfigurationFile": "false",
+                                "configuration": "",
+                                "arguments": "-f k8s-tiered.yaml --namespace=$(env)",
+                                "containerRegistryType": "Azure Container Registry",
+                                "dockerRegistryEndpoint": "",
+                                "azureSubscriptionEndpoint": "",
+                                "azureContainerRegistry": "",
+                                "secretName": "",
+                                "forceUpdate": "true",
+                                "versionOrLocation": "version",
+                                "versionSpec": "1.7.0",
+                                "checkLatest": "true",
+                                "specifyLocation": "",
+                                "cwd": "$(System.DefaultWorkingDirectory)/dev/drop",
+                                "outputFormat": "json",
+                                "kubectlOutput": ""
+                            }
+                        },
+                        {
+                            "taskId": "cbc316a2-586f-4def-be79-488a1f503564",
+                            "version": "0.*",
+                            "name": "update k8s deployment",
+                            "refName": "Kubernetes1",
+                            "enabled": true,
+                            "alwaysRun": false,
+                            "continueOnError": false,
+                            "timeoutInMinutes": 0,
+                            "definitionType": null,
+                            "overrideInputs": {},
+                            "condition": "succeeded()",
+                            "inputs": {
+                                "kubernetesServiceEndpoint": "8bd4ee98-7067-4ea0-bfce-233c35900c28",
+                                "command": "set",
+                                "useConfigurationFile": "false",
+                                "configuration": "",
+                                "arguments": "image deployment/azure-vote-front azure-vote-front=aksrg.azurecr.io/azure-vote-front:voting-$(env)-$(Build.BuildId) --namespace=$(env)",
+                                "containerRegistryType": "Azure Container Registry",
+                                "dockerRegistryEndpoint": "",
+                                "azureSubscriptionEndpoint": "",
+                                "azureContainerRegistry": "",
+                                "secretName": "",
+                                "forceUpdate": "true",
+                                "versionOrLocation": "version",
+                                "versionSpec": "1.7.0",
+                                "checkLatest": "true",
+                                "specifyLocation": "",
+                                "cwd": "$(System.DefaultWorkingDirectory)/dev/drop",
+                                "outputFormat": "json",
+                                "kubectlOutput": ""
+                            }
+                        },
+                        {
+                            "taskId": "cbc316a2-586f-4def-be79-488a1f503564",
+                            "version": "0.*",
+                            "name": "kubectl get",
+                            "refName": "Kubernetes1",
+                            "enabled": true,
+                            "alwaysRun": false,
+                            "continueOnError": false,
+                            "timeoutInMinutes": 0,
+                            "definitionType": "task",
+                            "overrideInputs": {},
+                            "condition": "succeeded()",
+                            "inputs": {
+                                "kubernetesServiceEndpoint": "8bd4ee98-7067-4ea0-bfce-233c35900c28",
+                                "command": "get",
+                                "useConfigurationFile": "false",
+                                "configuration": "",
+                                "arguments": "services azure-vote-front --namespace dev",
+                                "containerRegistryType": "Azure Container Registry",
+                                "dockerRegistryEndpoint": "",
+                                "azureSubscriptionEndpoint": "",
+                                "azureContainerRegistry": "",
+                                "secretName": "",
+                                "forceUpdate": "true",
+                                "versionOrLocation": "version",
+                                "versionSpec": "1.7.0",
+                                "checkLatest": "false",
+                                "specifyLocation": "",
+                                "cwd": "$(System.DefaultWorkingDirectory)",
+                                "outputFormat": "json",
+                                "kubectlOutput": "extIP"
+                            }
+                        },
+                        {
+                            "taskId": "d9bafed4-0b18-4f58-968d-86655b4d2ce9",
+                            "version": "1.*",
+                            "name": "basic powershell test",
+                            "refName": "CmdLine1",
+                            "enabled": true,
+                            "alwaysRun": false,
+                            "continueOnError": false,
+                            "timeoutInMinutes": 0,
+                            "definitionType": "task",
+                            "overrideInputs": {},
+                            "condition": "succeeded()",
+                            "inputs": {
+                                "filename": "pwsh",
+                                "arguments": "-ec JABpAHAAIAA9ACAAKAAkAGUAbgB2ADoARQBYAFQASQBQACAAfAAgAEMAbwBuAHYAZQByAHQARgByAG8AbQAtAEoAcwBvAG4AKQAuAHMAdABhAHQAdQBzAC4AbABvAGEAZABiAGEAbABhAG4AYwBlAHIALgBpAG4AZwByAGUAcwBzAFsAMABdAC4AaQBwAAoAJAB0AGUAcwB0ACAAPQAgAEkAbgB2AG8AawBlAC0AVwBlAGIAUgBlAHEAdQBlAHMAdAAgACQAaQBwACAALQBFAHIAcgBvAHIAQQBjAHQAaQBvAG4AIAAwACAALQBVAHMAZQBCAGEAcwBpAGMAUABhAHIAcwBpAG4AZwAKAGkAZgAgACgAJAB0AGUAcwB0AC4AUwB0AGEAdAB1AHMAQwBvAGQAZQAgAC0AbgBlACAAMgAwADAAKQAgAHsAIAAiAGYAYQBpAGwAZQBkACAAdABlAHMAdAAiADsAIABlAHgAaQB0ACAAMQAgAH0ACgBlAGwAcwBlACAAewAgACIAdABlAHMAdAAgAE8ASwAiACAAfQA=",
+                                "workingFolder": "",
+                                "failOnStandardError": "false"
+                            }
+                        },
+                        {
+                            "taskId": "e28912f1-0114-4464-802a-a3a35437fd16",
+                            "version": "0.*",
+                            "name": "pull image",
+                            "refName": "Docker1",
+                            "enabled": true,
+                            "alwaysRun": false,
+                            "continueOnError": false,
+                            "timeoutInMinutes": 0,
+                            "definitionType": "task",
+                            "overrideInputs": {},
+                            "condition": "succeeded()",
+                            "inputs": {
+                                "containerregistrytype": "Azure Container Registry",
+                                "dockerRegistryEndpoint": "",
+                                "azureSubscriptionEndpoint": "68a342ed-8687-4fe6-8608-8cc5e5c9ac7d",
+                                "azureContainerRegistry": "{\"loginServer\":\"aksrg.azurecr.io\", \"id\" : \"/subscriptions/0534ece1-3f64-43de-a058-07d1da4960b0/resourceGroups/aks/providers/Microsoft.ContainerRegistry/registries/aksrg\"}",
+                                "action": "Run a Docker command",
+                                "dockerFile": "**/Dockerfile",
+                                "buildArguments": "",
+                                "defaultContext": "true",
+                                "context": "",
+                                "imageName": "$(Build.Repository.Name):$(Build.BuildId)",
+                                "imageNamesPath": "",
+                                "qualifyImageName": "true",
+                                "additionalImageTags": "",
+                                "includeSourceTags": "false",
+                                "includeLatestTag": "false",
+                                "imageDigestFile": "",
+                                "containerName": "",
+                                "ports": "",
+                                "volumes": "",
+                                "envVars": "",
+                                "workDir": "",
+                                "entrypoint": "",
+                                "containerCommand": "",
+                                "detached": "true",
+                                "restartPolicy": "no",
+                                "restartMaxRetries": "",
+                                "customCommand": "pull aksrg.azurecr.io/azure-vote-front:voting-$(env)-$(Build.BuildId)",
+                                "dockerHostEndpoint": "",
+                                "cwd": "$(System.DefaultWorkingDirectory)"
+                            }
+                        },
+                        {
+                            "taskId": "e28912f1-0114-4464-802a-a3a35437fd16",
+                            "version": "0.*",
+                            "name": "tag image",
+                            "refName": "ClonedDocker11",
+                            "enabled": true,
+                            "alwaysRun": false,
+                            "continueOnError": false,
+                            "timeoutInMinutes": 0,
+                            "definitionType": "task",
+                            "overrideInputs": {},
+                            "condition": "succeeded()",
+                            "inputs": {
+                                "containerregistrytype": "Azure Container Registry",
+                                "dockerRegistryEndpoint": "",
+                                "azureSubscriptionEndpoint": "68a342ed-8687-4fe6-8608-8cc5e5c9ac7d",
+                                "azureContainerRegistry": "{\"loginServer\":\"aksrg.azurecr.io\", \"id\" : \"/subscriptions/0534ece1-3f64-43de-a058-07d1da4960b0/resourceGroups/aks/providers/Microsoft.ContainerRegistry/registries/aksrg\"}",
+                                "action": "Run a Docker command",
+                                "dockerFile": "**/Dockerfile",
+                                "buildArguments": "",
+                                "defaultContext": "true",
+                                "context": "",
+                                "imageName": "$(Build.Repository.Name):$(Build.BuildId)",
+                                "imageNamesPath": "",
+                                "qualifyImageName": "true",
+                                "additionalImageTags": "",
+                                "includeSourceTags": "false",
+                                "includeLatestTag": "false",
+                                "imageDigestFile": "",
+                                "containerName": "",
+                                "ports": "",
+                                "volumes": "",
+                                "envVars": "",
+                                "workDir": "",
+                                "entrypoint": "",
+                                "containerCommand": "",
+                                "detached": "true",
+                                "restartPolicy": "no",
+                                "restartMaxRetries": "",
+                                "customCommand": "tag aksrg.azurecr.io/azure-vote-front:voting-$(env)-$(Build.BuildId) aksrg.azurecr.io/azure-vote-front:voting-prod-$(Build.BuildId)",
+                                "dockerHostEndpoint": "",
+                                "cwd": "$(System.DefaultWorkingDirectory)"
+                            }
+                        },
+                        {
+                            "taskId": "e28912f1-0114-4464-802a-a3a35437fd16",
+                            "version": "0.*",
+                            "name": "push image",
+                            "refName": "ClonedClonedDocker112",
+                            "enabled": true,
+                            "alwaysRun": false,
+                            "continueOnError": false,
+                            "timeoutInMinutes": 0,
+                            "definitionType": "task",
+                            "overrideInputs": {},
+                            "condition": "succeeded()",
+                            "inputs": {
+                                "containerregistrytype": "Azure Container Registry",
+                                "dockerRegistryEndpoint": "",
+                                "azureSubscriptionEndpoint": "68a342ed-8687-4fe6-8608-8cc5e5c9ac7d",
+                                "azureContainerRegistry": "{\"loginServer\":\"aksrg.azurecr.io\", \"id\" : \"/subscriptions/0534ece1-3f64-43de-a058-07d1da4960b0/resourceGroups/aks/providers/Microsoft.ContainerRegistry/registries/aksrg\"}",
+                                "action": "Run a Docker command",
+                                "dockerFile": "**/Dockerfile",
+                                "buildArguments": "",
+                                "defaultContext": "true",
+                                "context": "",
+                                "imageName": "$(Build.Repository.Name):$(Build.BuildId)",
+                                "imageNamesPath": "",
+                                "qualifyImageName": "true",
+                                "additionalImageTags": "",
+                                "includeSourceTags": "false",
+                                "includeLatestTag": "false",
+                                "imageDigestFile": "",
+                                "containerName": "",
+                                "ports": "",
+                                "volumes": "",
+                                "envVars": "",
+                                "workDir": "",
+                                "entrypoint": "",
+                                "containerCommand": "",
+                                "detached": "true",
+                                "restartPolicy": "no",
+                                "restartMaxRetries": "",
+                                "customCommand": "push aksrg.azurecr.io/azure-vote-front:voting-prod-$(Build.BuildId)",
+                                "dockerHostEndpoint": "",
+                                "cwd": "$(System.DefaultWorkingDirectory)"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "environmentOptions": {
+                "emailNotificationType": "OnlyOnFailure",
+                "emailRecipients": "release.environment.owner;release.creator",
+                "skipArtifactsDownload": false,
+                "timeoutInMinutes": 0,
+                "enableAccessToken": false,
+                "publishDeploymentStatus": true
+            },
+            "demands": [],
+            "conditions": [
+                {
+                    "name": "ReleaseStarted",
+                    "conditionType": 1,
+                    "value": ""
+                }
+            ],
+            "executionPolicy": {
+                "concurrencyCount": 0,
+                "queueDepthCount": 0
+            },
+            "schedules": [],
+            "retentionPolicy": {
+                "daysToKeep": 30,
+                "releasesToKeep": 3,
+                "retainBuild": true
+            },
+            "processParameters": {},
+            "properties": {},
+            "preDeploymentGates": {
+                "id": 0,
+                "gatesOptions": null,
+                "gates": []
+            },
+            "postDeploymentGates": {
+                "id": 0,
+                "gatesOptions": null,
+                "gates": []
+            }
+        },
+        {
+            "id": 5,
+            "name": "prod",
+            "rank": 2,
+            "owner": {
+                "id": "d3ffbecd-6b86-48c4-9091-a3263c5f9be3",
+                "displayName": "Глеб Боушев",
+                "uniqueName": "core@4c74356b41.com",
+                "url": "https://app.vssps.visualstudio.com/A4d91f5a3-a9c6-4445-8933-77d12eeda747/_apis/Identities/d3ffbecd-6b86-48c4-9091-a3263c5f9be3",
+                "imageUrl": "https://4c74356b41.visualstudio.com/_api/_common/identityImage?id=d3ffbecd-6b86-48c4-9091-a3263c5f9be3&t=00000000-0000-0000-d05f-a1750931d508"
+            },
+            "variables": {
+                "env": {
+                    "value": "prod"
+                }
+            },
+            "variableGroups": [],
+            "preDeployApprovals": {
+                "approvals": [
+                    {
+                        "rank": 1,
+                        "isAutomated": true,
+                        "isNotificationOn": false,
+                        "id": 12
+                    }
+                ]
+            },
+            "deployStep": {
+                "id": 13
+            },
+            "postDeployApprovals": {
+                "approvals": [
+                    {
+                        "rank": 1,
+                        "isAutomated": true,
+                        "isNotificationOn": false,
+                        "id": 16
+                    }
+                ]
+            },
+            "deployPhases": [
+                {
+                    "deploymentInput": {
+                        "parallelExecution": {
+                            "parallelExecutionType": "none"
+                        },
+                        "skipArtifactsDownload": false,
+                        "artifactsDownloadInput": {
+                            "downloadInputs": []
+                        },
+                        "queueId": 16,
+                        "demands": [],
+                        "enableAccessToken": false,
+                        "timeoutInMinutes": 0,
+                        "jobCancelTimeoutInMinutes": 1,
+                        "condition": "succeeded()",
+                        "overrideInputs": {}
+                    },
+                    "rank": 1,
+                    "phaseType": 1,
+                    "name": "Agent phase",
+                    "workflowTasks": [
+                        {
+                            "taskId": "cbc316a2-586f-4def-be79-488a1f503564",
+                            "version": "0.*",
+                            "name": "create k8s deployment",
+                            "refName": "ClonedKubernetes11",
+                            "enabled": true,
+                            "alwaysRun": false,
+                            "continueOnError": false,
+                            "timeoutInMinutes": 0,
+                            "definitionType": null,
+                            "overrideInputs": {},
+                            "condition": "succeeded()",
+                            "inputs": {
+                                "kubernetesServiceEndpoint": "8bd4ee98-7067-4ea0-bfce-233c35900c28",
+                                "command": "apply",
+                                "useConfigurationFile": "false",
+                                "configuration": "",
+                                "arguments": "-f k8s-tiered.yaml --namespace=$(env)",
+                                "containerRegistryType": "Azure Container Registry",
+                                "dockerRegistryEndpoint": "",
+                                "azureSubscriptionEndpoint": "",
+                                "azureContainerRegistry": "",
+                                "secretName": "",
+                                "forceUpdate": "true",
+                                "versionOrLocation": "version",
+                                "versionSpec": "1.7.0",
+                                "checkLatest": "false",
+                                "specifyLocation": "",
+                                "cwd": "$(System.DefaultWorkingDirectory)/dev/drop",
+                                "outputFormat": "json",
+                                "kubectlOutput": ""
+                            }
+                        },
+                        {
+                            "taskId": "cbc316a2-586f-4def-be79-488a1f503564",
+                            "version": "0.*",
+                            "name": "update k8s deployment",
+                            "refName": "Kubernetes1",
+                            "enabled": true,
+                            "alwaysRun": false,
+                            "continueOnError": false,
+                            "timeoutInMinutes": 0,
+                            "definitionType": null,
+                            "overrideInputs": {},
+                            "condition": "succeeded()",
+                            "inputs": {
+                                "kubernetesServiceEndpoint": "8bd4ee98-7067-4ea0-bfce-233c35900c28",
+                                "command": "set",
+                                "useConfigurationFile": "false",
+                                "configuration": "",
+                                "arguments": "image deployment/azure-vote-front azure-vote-front=aksrg.azurecr.io/azure-vote-front:voting-$(env)-$(Build.BuildId) --namespace=$(env)",
+                                "containerRegistryType": "Azure Container Registry",
+                                "dockerRegistryEndpoint": "",
+                                "azureSubscriptionEndpoint": "",
+                                "azureContainerRegistry": "",
+                                "secretName": "",
+                                "forceUpdate": "true",
+                                "versionOrLocation": "version",
+                                "versionSpec": "1.7.0",
+                                "checkLatest": "false",
+                                "specifyLocation": "",
+                                "cwd": "$(System.DefaultWorkingDirectory)/dev/drop",
+                                "outputFormat": "json",
+                                "kubectlOutput": ""
+                            }
+                        }
+                    ]
+                }
+            ],
+            "environmentOptions": {
+                "emailNotificationType": "OnlyOnFailure",
+                "emailRecipients": "release.environment.owner;release.creator",
+                "skipArtifactsDownload": false,
+                "timeoutInMinutes": 0,
+                "enableAccessToken": false,
+                "publishDeploymentStatus": true
+            },
+            "demands": [],
+            "conditions": [
+                {
+                    "name": "dev",
+                    "conditionType": 2,
+                    "value": "4"
+                }
+            ],
+            "executionPolicy": {
+                "concurrencyCount": 0,
+                "queueDepthCount": 0
+            },
+            "schedules": [],
+            "retentionPolicy": {
+                "daysToKeep": 30,
+                "releasesToKeep": 3,
+                "retainBuild": true
+            },
+            "processParameters": {},
+            "properties": {},
+            "preDeploymentGates": {
+                "id": 0,
+                "gatesOptions": null,
+                "gates": []
+            },
+            "postDeploymentGates": {
+                "id": 0,
+                "gatesOptions": null,
+                "gates": []
+            }
+        }
+    ],
+    "artifacts": [
+        {
+            "sourceId": "8ae07ddf-450b-4294-9a6e-d505f361a54c:2",
+            "type": "Build",
+            "alias": "dev",
+            "definitionReference": {
+                "artifactSourceDefinitionUrl": {
+                    "id": "https://4c74356b41.visualstudio.com/_permalink/_build/index?collectionId=ac2ca6d5-86fe-4c05-bf81-f57d1d4d7c9f&projectId=8ae07ddf-450b-4294-9a6e-d505f361a54c&definitionId=2",
+                    "name": ""
+                },
+                "defaultVersionBranch": {
+                    "id": "",
+                    "name": ""
+                },
+                "defaultVersionSpecific": {
+                    "id": "",
+                    "name": ""
+                },
+                "defaultVersionTags": {
+                    "id": "",
+                    "name": ""
+                },
+                "defaultVersionType": {
+                    "id": "latestType",
+                    "name": "Latest"
+                },
+                "definition": {
+                    "id": "2",
+                    "name": "aks-Container (PREVIEW)-CI"
+                },
+                "project": {
+                    "id": "8ae07ddf-450b-4294-9a6e-d505f361a54c",
+                    "name": "aks"
+                }
+            },
+            "isPrimary": true
+        }
+    ],
+    "triggers": [
+        {
+            "artifactAlias": "dev",
+            "triggerConditions": [
+                {
+                    "sourceBranch": "dev",
+                    "tags": [],
+                    "useBuildDefinitionBranch": false
+                }
+            ],
+            "triggerType": 1
+        }
+    ],
+    "releaseNameFormat": "Release-$(rev:r)",
+    "url": "https://4c74356b41.vsrm.visualstudio.com/8ae07ddf-450b-4294-9a6e-d505f361a54c/_apis/Release/definitions/3",
+    "_links": {
+        "self": {
+            "href": "https://4c74356b41.vsrm.visualstudio.com/8ae07ddf-450b-4294-9a6e-d505f361a54c/_apis/Release/definitions/3"
+        },
+        "web": {
+            "href": "https://4c74356b41.visualstudio.com/8ae07ddf-450b-4294-9a6e-d505f361a54c/_release?definitionId=3"
+        }
+    },
+    "tags": [],
+    "properties": {
+        "DefinitionCreationSource": {
+            "$type": "System.String",
+            "$value": "ReleaseClone"
+        }
+    }
+}

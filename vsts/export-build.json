@@ -1,0 +1,468 @@
+{
+    "options": [
+        {
+            "enabled": true,
+            "definition": {
+                "id": "5d58cc01-7c75-450c-be18-a388ddb129ec"
+            },
+            "inputs": {
+                "branchFilters": "[\"+refs/heads/dev*\"]",
+                "additionalFields": "{}"
+            }
+        },
+        {
+            "enabled": false,
+            "definition": {
+                "id": "a9db38f9-9fdc-478c-b0f9-464221e58316"
+            },
+            "inputs": {
+                "workItemType": "1078641",
+                "assignToRequestor": "true",
+                "additionalFields": "{}"
+            }
+        },
+        {
+            "enabled": false,
+            "definition": {
+                "id": "57578776-4c22-4526-aeb0-86b6da17ee9c"
+            },
+            "inputs": {}
+        }
+    ],
+    "triggers": [
+        {
+            "branchFilters": [
+                "+refs/heads/dev"
+            ],
+            "pathFilters": [],
+            "batchChanges": true,
+            "maxConcurrentBuildsPerBranch": 1,
+            "pollingInterval": 0,
+            "triggerType": 2
+        }
+    ],
+    "variables": {
+        "system.debug": {
+            "value": "false",
+            "allowOverride": true
+        }
+    },
+    "variableGroups": [
+        {
+            "variables": {
+                "registry": {
+                    "value": "aksrg.azurecr.io"
+                },
+                "registryKey": {
+                    "value": "KB0z2MX9QiIUzOu+Q1+CVROt3q4KSaOD"
+                },
+                "registryUser": {
+                    "value": "aksrg"
+                }
+            },
+            "type": "Vsts",
+            "name": "aks",
+            "id": 1
+        }
+    ],
+    "retentionRules": [
+        {
+            "branches": [
+                "+refs/heads/*"
+            ],
+            "artifacts": [],
+            "artifactTypesToDelete": [
+                "FilePath",
+                "SymbolStore"
+            ],
+            "daysToKeep": 10,
+            "minimumToKeep": 1,
+            "deleteBuildRecord": true,
+            "deleteTestResults": true
+        }
+    ],
+    "metrics": [
+        {
+            "name": "CurrentBuildsInQueue",
+            "scope": "refs/heads/master",
+            "intValue": 0
+        },
+        {
+            "name": "CurrentBuildsInProgress",
+            "scope": "refs/heads/master",
+            "intValue": 0
+        },
+        {
+            "name": "CurrentBuildsInQueue",
+            "scope": "refs/heads/dev",
+            "intValue": 0
+        },
+        {
+            "name": "CurrentBuildsInProgress",
+            "scope": "refs/heads/dev",
+            "intValue": 0
+        },
+        {
+            "name": "CanceledBuilds",
+            "scope": "refs/heads/dev",
+            "intValue": 0,
+            "date": "2018-01-23T00:00:00.000Z"
+        },
+        {
+            "name": "FailedBuilds",
+            "scope": "refs/heads/dev",
+            "intValue": 0,
+            "date": "2018-01-23T00:00:00.000Z"
+        },
+        {
+            "name": "PartiallySuccessfulBuilds",
+            "scope": "refs/heads/dev",
+            "intValue": 0,
+            "date": "2018-01-23T00:00:00.000Z"
+        },
+        {
+            "name": "SuccessfulBuilds",
+            "scope": "refs/heads/dev",
+            "intValue": 6,
+            "date": "2018-01-23T00:00:00.000Z"
+        },
+        {
+            "name": "TotalBuilds",
+            "scope": "refs/heads/dev",
+            "intValue": 6,
+            "date": "2018-01-23T00:00:00.000Z"
+        },
+        {
+            "name": "CanceledBuilds",
+            "scope": "refs/heads/master",
+            "intValue": 1,
+            "date": "2018-01-21T00:00:00.000Z"
+        },
+        {
+            "name": "FailedBuilds",
+            "scope": "refs/heads/master",
+            "intValue": 0,
+            "date": "2018-01-21T00:00:00.000Z"
+        },
+        {
+            "name": "PartiallySuccessfulBuilds",
+            "scope": "refs/heads/master",
+            "intValue": 0,
+            "date": "2018-01-21T00:00:00.000Z"
+        },
+        {
+            "name": "SuccessfulBuilds",
+            "scope": "refs/heads/master",
+            "intValue": 0,
+            "date": "2018-01-21T00:00:00.000Z"
+        },
+        {
+            "name": "TotalBuilds",
+            "scope": "refs/heads/master",
+            "intValue": 1,
+            "date": "2018-01-21T00:00:00.000Z"
+        },
+        {
+            "name": "CanceledBuilds",
+            "scope": "refs/heads/dev",
+            "intValue": 0,
+            "date": "2018-01-21T00:00:00.000Z"
+        },
+        {
+            "name": "FailedBuilds",
+            "scope": "refs/heads/dev",
+            "intValue": 10,
+            "date": "2018-01-21T00:00:00.000Z"
+        },
+        {
+            "name": "PartiallySuccessfulBuilds",
+            "scope": "refs/heads/dev",
+            "intValue": 0,
+            "date": "2018-01-21T00:00:00.000Z"
+        },
+        {
+            "name": "SuccessfulBuilds",
+            "scope": "refs/heads/dev",
+            "intValue": 9,
+            "date": "2018-01-21T00:00:00.000Z"
+        },
+        {
+            "name": "TotalBuilds",
+            "scope": "refs/heads/dev",
+            "intValue": 19,
+            "date": "2018-01-21T00:00:00.000Z"
+        },
+        {
+            "name": "CanceledBuilds",
+            "scope": "refs/heads/master",
+            "intValue": 0,
+            "date": "2018-01-16T00:00:00.000Z"
+        },
+        {
+            "name": "FailedBuilds",
+            "scope": "refs/heads/master",
+            "intValue": 1,
+            "date": "2018-01-16T00:00:00.000Z"
+        },
+        {
+            "name": "PartiallySuccessfulBuilds",
+            "scope": "refs/heads/master",
+            "intValue": 0,
+            "date": "2018-01-16T00:00:00.000Z"
+        },
+        {
+            "name": "SuccessfulBuilds",
+            "scope": "refs/heads/master",
+            "intValue": 1,
+            "date": "2018-01-16T00:00:00.000Z"
+        },
+        {
+            "name": "TotalBuilds",
+            "scope": "refs/heads/master",
+            "intValue": 2,
+            "date": "2018-01-16T00:00:00.000Z"
+        },
+        {
+            "name": "CanceledBuilds",
+            "scope": "refs/heads/dev",
+            "intValue": 0,
+            "date": "2018-01-16T00:00:00.000Z"
+        },
+        {
+            "name": "FailedBuilds",
+            "scope": "refs/heads/dev",
+            "intValue": 1,
+            "date": "2018-01-16T00:00:00.000Z"
+        },
+        {
+            "name": "PartiallySuccessfulBuilds",
+            "scope": "refs/heads/dev",
+            "intValue": 0,
+            "date": "2018-01-16T00:00:00.000Z"
+        },
+        {
+            "name": "SuccessfulBuilds",
+            "scope": "refs/heads/dev",
+            "intValue": 2,
+            "date": "2018-01-16T00:00:00.000Z"
+        },
+        {
+            "name": "TotalBuilds",
+            "scope": "refs/heads/dev",
+            "intValue": 3,
+            "date": "2018-01-16T00:00:00.000Z"
+        }
+    ],
+    "_links": {
+        "self": {
+            "href": "https://4c74356b41.visualstudio.com/8ae07ddf-450b-4294-9a6e-d505f361a54c/_apis/build/Definitions/2"
+        },
+        "web": {
+            "href": "https://4c74356b41.visualstudio.com/_permalink/_build/index?collectionId=ac2ca6d5-86fe-4c05-bf81-f57d1d4d7c9f&projectId=8ae07ddf-450b-4294-9a6e-d505f361a54c&definitionId=2"
+        },
+        "editor": {
+            "href": "https://4c74356b41.visualstudio.com/_permalink/_build/definitionEditor?collectionId=ac2ca6d5-86fe-4c05-bf81-f57d1d4d7c9f&projectId=8ae07ddf-450b-4294-9a6e-d505f361a54c&definitionId=2"
+        }
+    },
+    "buildNumberFormat": "$(rev:.r)",
+    "jobAuthorizationScope": 1,
+    "jobTimeoutInMinutes": 60,
+    "jobCancelTimeoutInMinutes": 5,
+    "process": {
+        "phases": [
+            {
+                "dependencies": [],
+                "steps": [
+                    {
+                        "environment": {},
+                        "enabled": true,
+                        "continueOnError": false,
+                        "alwaysRun": false,
+                        "displayName": "Publish Artifact: drop",
+                        "timeoutInMinutes": 0,
+                        "condition": "succeeded()",
+                        "refName": "PublishBuildArtifacts1",
+                        "task": {
+                            "id": "2ff763a7-ce83-4e1f-bc89-0ae63477cebe",
+                            "versionSpec": "1.*",
+                            "definitionType": "task"
+                        },
+                        "inputs": {
+                            "PathtoPublish": "kubectl",
+                            "ArtifactName": "drop",
+                            "ArtifactType": "Container",
+                            "TargetPath": "\\\\my\\share\\$(Build.DefinitionName)\\$(Build.BuildNumber)",
+                            "Parallel": "false",
+                            "ParallelCount": "8"
+                        }
+                    },
+                    {
+                        "environment": {},
+                        "enabled": true,
+                        "continueOnError": false,
+                        "alwaysRun": false,
+                        "displayName": "Build containers",
+                        "timeoutInMinutes": 0,
+                        "condition": "succeeded()",
+                        "refName": "DockerCompose1",
+                        "task": {
+                            "id": "6975e2d1-96d3-4afc-8a41-498b5d34ea19",
+                            "versionSpec": "0.*",
+                            "definitionType": "task"
+                        },
+                        "inputs": {
+                            "containerregistrytype": "Azure Container Registry",
+                            "dockerRegistryEndpoint": "",
+                            "azureSubscriptionEndpoint": "68a342ed-8687-4fe6-8608-8cc5e5c9ac7d",
+                            "azureContainerRegistry": "{\"loginServer\":\"aksrg.azurecr.io\", \"id\" : \"/subscriptions/0534ece1-3f64-43de-a058-07d1da4960b0/resourceGroups/aks/providers/Microsoft.ContainerRegistry/registries/aksrg\"}",
+                            "dockerComposeFile": "docker-compose.yaml",
+                            "additionalDockerComposeFiles": "",
+                            "dockerComposeFileArgs": "",
+                            "projectName": "$(Build.Repository.Name)",
+                            "qualifyImageNames": "true",
+                            "action": "Build services",
+                            "additionalImageTags": "voting-dev-$(Build.BuildId)",
+                            "includeSourceTags": "false",
+                            "includeLatestTag": "true",
+                            "buildImages": "true",
+                            "serviceName": "",
+                            "containerName": "",
+                            "ports": "",
+                            "workDir": "",
+                            "entrypoint": "",
+                            "containerCommand": "",
+                            "detached": "true",
+                            "abortOnContainerExit": "true",
+                            "imageDigestComposeFile": "$(Build.StagingDirectory)/docker-compose.images.yml",
+                            "removeBuildOptions": "false",
+                            "baseResolveDirectory": "",
+                            "outputDockerComposeFile": "$(Build.StagingDirectory)/docker-compose.yml",
+                            "dockerComposeCommand": "",
+                            "dockerHostEndpoint": "",
+                            "nopIfNoDockerComposeFile": "false",
+                            "requireAdditionalDockerComposeFiles": "false",
+                            "cwd": "$(System.DefaultWorkingDirectory)"
+                        }
+                    },
+                    {
+                        "environment": {},
+                        "enabled": true,
+                        "continueOnError": false,
+                        "alwaysRun": false,
+                        "displayName": "Push containers",
+                        "timeoutInMinutes": 0,
+                        "condition": "succeeded()",
+                        "refName": "ClonedDockerCompose13",
+                        "task": {
+                            "id": "6975e2d1-96d3-4afc-8a41-498b5d34ea19",
+                            "versionSpec": "0.*",
+                            "definitionType": "task"
+                        },
+                        "inputs": {
+                            "containerregistrytype": "Azure Container Registry",
+                            "dockerRegistryEndpoint": "",
+                            "azureSubscriptionEndpoint": "68a342ed-8687-4fe6-8608-8cc5e5c9ac7d",
+                            "azureContainerRegistry": "{\"loginServer\":\"aksrg.azurecr.io\", \"id\" : \"/subscriptions/0534ece1-3f64-43de-a058-07d1da4960b0/resourceGroups/aks/providers/Microsoft.ContainerRegistry/registries/aksrg\"}",
+                            "dockerComposeFile": "docker-compose.yaml",
+                            "additionalDockerComposeFiles": "",
+                            "dockerComposeFileArgs": "",
+                            "projectName": "$(Build.Repository.Name)",
+                            "qualifyImageNames": "true",
+                            "action": "Push services",
+                            "additionalImageTags": "voting-dev-$(Build.BuildId)",
+                            "includeSourceTags": "false",
+                            "includeLatestTag": "true",
+                            "buildImages": "true",
+                            "serviceName": "",
+                            "containerName": "",
+                            "ports": "",
+                            "workDir": "",
+                            "entrypoint": "",
+                            "containerCommand": "",
+                            "detached": "true",
+                            "abortOnContainerExit": "true",
+                            "imageDigestComposeFile": "$(Build.StagingDirectory)/docker-compose.images.yml",
+                            "removeBuildOptions": "false",
+                            "baseResolveDirectory": "",
+                            "outputDockerComposeFile": "$(Build.StagingDirectory)/docker-compose.yml",
+                            "dockerComposeCommand": "",
+                            "dockerHostEndpoint": "",
+                            "nopIfNoDockerComposeFile": "false",
+                            "requireAdditionalDockerComposeFiles": "false",
+                            "cwd": "$(System.DefaultWorkingDirectory)"
+                        }
+                    }
+                ],
+                "variables": {},
+                "name": "Phase 1",
+                "condition": "succeeded()",
+                "target": {
+                    "demands": [],
+                    "executionOptions": {
+                        "type": 0
+                    },
+                    "allowScriptsAuthAccessOption": false,
+                    "type": 1
+                },
+                "jobAuthorizationScope": "projectCollection",
+                "jobCancelTimeoutInMinutes": 1
+            }
+        ],
+        "type": 1
+    },
+    "repository": {
+        "properties": {
+            "cleanOptions": "0",
+            "labelSources": "0",
+            "labelSourcesFormat": "$(build.buildNumber)",
+            "reportBuildStatus": "true",
+            "gitLfsSupport": "false",
+            "skipSyncSource": "false",
+            "checkoutNestedSubmodules": "false",
+            "fetchDepth": "0"
+        },
+        "id": "3a938de5-6a9f-4aba-b749-614cd7a0bcba",
+        "type": "TfsGit",
+        "name": "aks",
+        "url": "https://4c74356b41.visualstudio.com/_git/aks",
+        "defaultBranch": "refs/heads/dev",
+        "clean": "false",
+        "checkoutSubmodules": false
+    },
+    "processParameters": {},
+    "quality": 1,
+    "authoredBy": {
+        "id": "d3ffbecd-6b86-48c4-9091-a3263c5f9be3",
+        "displayName": "Глеб Боушев",
+        "uniqueName": "core@4c74356b41.com",
+        "url": "https://app.vssps.visualstudio.com/A4d91f5a3-a9c6-4445-8933-77d12eeda747/_apis/Identities/d3ffbecd-6b86-48c4-9091-a3263c5f9be3",
+        "imageUrl": "https://4c74356b41.visualstudio.com/_api/_common/identityImage?id=d3ffbecd-6b86-48c4-9091-a3263c5f9be3"
+    },
+    "drafts": [],
+    "queue": {
+        "id": 16,
+        "name": "Hosted Linux Preview",
+        "pool": {
+            "id": 3,
+            "name": "Hosted Linux Preview",
+            "isHosted": true
+        }
+    },
+    "id": 2,
+    "name": "dev",
+    "url": "https://4c74356b41.visualstudio.com/8ae07ddf-450b-4294-9a6e-d505f361a54c/_apis/build/Definitions/2",
+    "uri": "vstfs:///Build/Definition/2",
+    "path": "\\",
+    "type": 2,
+    "queueStatus": 0,
+    "revision": 25,
+    "createdDate": "2018-01-21T17:15:38.990Z",
+    "project": {
+        "id": "8ae07ddf-450b-4294-9a6e-d505f361a54c",
+        "name": "aks",
+        "url": "https://4c74356b41.visualstudio.com/_apis/projects/8ae07ddf-450b-4294-9a6e-d505f361a54c",
+        "state": "wellFormed",
+        "revision": 34,
+        "visibility": 0
+    }
+}

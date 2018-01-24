@@ -1,0 +1,40 @@
+# Оригинал
+git clone https://github.com/Azure-Samples/azure-voting-app-redis.git
+# Репозиторий этого доклада
+git clone https://github.com/4c74356b41/VSTS-k8s.git
+
+# Докер образ
+docker run -it --rm azuresdk/azure-cli-python
+az aks install-cli
+az login
+az account set --subscription %sub_name%
+
+# переменные
+grp="mygrprehre"
+name="mynameerhreh"
+location="westeurope"
+
+# создание ресурсов Azure
+az group create --name $grp --location $location
+az acr create --resource-group $grp --name $name --sku Basic --admin-enabled
+key=$(az acr credential show --name $name --query 'passwords[0].value')
+az aks create --resource-group $grp --name $name --node-count 1 --generate-ssh-keys --location $location
+az aks get-credentials --resource-group $grp --name $name -f $name
+export KUBECONFIG=$name
+
+# создание секрета и проверка нод(ы)
+kubectl create secret docker-registry k8s --docker-server=$name.azurecr.io --docker-username=$name --docker-password=$key --docker-email=admin@azurecr.io
+kubectl get nodes
+
+# простой тест на powershell
+$Text = @'
+$ip = ($env:EXTIP | ConvertFrom-Json).status.loadbalancer.ingress[0].ip
+$test = Invoke-WebRequest $ip -ErrorAction 0 -UseBasicParsing
+if ($test.StatusCode -ne 200) { "failed test"; exit 1 }
+else { "test OK" }
+'@
+$Bytes = [System.Text.Encoding]::Unicode.GetBytes($Text)
+$EncodedText =[Convert]::ToBase64String($Bytes)
+$EncodedText
+
+[System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($EncodedText)
